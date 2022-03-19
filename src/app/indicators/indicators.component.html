@@ -1,0 +1,38 @@
+<ul class="list-group">
+    <li class="list-group-item bg-light d-flex justify-content-between align-items-center">
+        <div ngbTooltip="Filtrar" container="body">
+            <i class="fa fa-bars text-primary fa-2x pointer" (click)="showFilter = !showFilter"></i>
+        </div>
+        <h3>
+            Indicadores
+        </h3>
+        <div></div>
+    </li>
+    <shared-loading *ngIf="loading"></shared-loading>
+    <ng-container *ngIf="!loading">
+        <div class="d-flex m-3" *ngIf="showFilter">
+            <div class="col-md-9 pl-0">
+                <form *ngIf="form" [formGroup]="form">
+                    <ng-select (change)="onChange($event.nombre)" formControlName="name" [items]="indicatorsSaved"
+                        bindLabel="nombre" placeholder="Seleccionar indicador">
+                    </ng-select>
+                </form>
+            </div>
+            <button class="btn btn-sm btn-primary mr-3 d-block col-md-3" (click)="clear()"><i class="fa fa-trash"> </i> Limpiar
+                filtro</button>
+        </div>
+        <ng-container *ngIf="indicators && indicators.length > 0">
+            <li class="list-group-item" *ngFor="let indicator of indicators">
+                <app-item-indicator [indicator]="indicator"></app-item-indicator>
+            </li>
+        </ng-container>
+        <div class="d-flex align-items-center justify-content-center" *ngIf="!indicators || !indicators.length">
+            <div class="alert alert-warning border border-warning m-3 text-center w-100">
+                <div>
+                    <i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
+                </div>
+                No se han encontrado indicadores económicos
+            </div>
+        </div>
+    </ng-container>
+</ul>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'indicators';
+
+
+  ngOnInit() {
+    registerLocaleData( es );
+  }
+
 }

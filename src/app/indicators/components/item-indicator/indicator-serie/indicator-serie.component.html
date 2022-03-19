@@ -1,0 +1,41 @@
+<div class="modal-header d-flex justify-content-between align-items-center">
+    <div>
+        <i class="fa fa-chevron-left pr-0 pointer" (click)="activeModal.dismiss('Cross click')" container="body"></i>
+    </div>
+    <h4>
+        {{indicator.nombre}}
+    </h4>
+    <div></div>
+</div>
+<div class="modal-body p-0">
+    <shared-loading *ngIf="loading"></shared-loading>
+    <ul class="list-group" *ngIf="!loading">
+        <ng-container *ngIf="serie && serie.length > 0">
+            <ng-container *ngFor="let s of serie">
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="#" (click)="false">
+                                {{s.fecha | date: 'YYYY-MM-dd'}}
+                            </a>
+                        </div>
+                        <div class="font-weight-bold">
+                            $ {{s.valor | number:'2.0':'es'}}
+                        </div>
+                    </div>
+                </li>
+            </ng-container>
+        </ng-container>
+        <div class="d-flex align-items-center justify-content-center" *ngIf="!serie || !serie.length">
+            <div class="alert alert-warning border border-warning m-3 text-center w-100">
+                <div>
+                    <i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
+                </div>
+                No se han encontrado datos para
+                <span class="font-weight-bold">
+                    {{indicator.nombre}}
+                </span>
+            </div>
+        </div>
+    </ul>
+</div>
