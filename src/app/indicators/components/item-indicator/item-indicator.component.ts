@@ -1,15 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Indicator } from 'src/app/classes/indicator';
-import { IndicatorsService } from 'src/app/services/indicators.service';
-import Swal from 'sweetalert2';
+import { IndicatorDetailComponent } from './indicator-detail/indicator-detail.component';
 import { IndicatorSerieComponent } from './indicator-serie/indicator-serie.component';
 
 @Component({
   selector: 'app-item-indicator',
   templateUrl: './item-indicator.component.html',
-  styles: [
-  ]
+  styleUrls: ['./item-indicator.component.css']
 })
 export class ItemIndicatorComponent implements OnInit {
 
@@ -25,12 +23,12 @@ export class ItemIndicatorComponent implements OnInit {
   }
 
   showIndicatorType(indicator: Indicator) {
-    const modal = this._modalService.open(IndicatorSerieComponent, { backdrop: 'static' })
-    modal.componentInstance.indicator = indicator;   
+    const modal = this._modalService.open(IndicatorSerieComponent)
+    modal.componentInstance.indicator = indicator;
   }
 
-  openIndicatorDetail(indicator: Indicator){
-    
+  openIndicatorDetail(indicator: Indicator) {
+    const modal = this._modalService.open(IndicatorDetailComponent)
+    modal.componentInstance.indicator = indicator;
   }
-
 }

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { of } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Indicator } from '../classes/indicator';
 import { IndicatorsService } from '../services/indicators.service';
@@ -14,28 +12,20 @@ export class IndicatorsComponent implements OnInit {
 
   public indicators: Indicator[] = []
 
-  public indicatorsSaved: Indicator[] = []
+  public indicatorsFiltered: Indicator[] = []
+
+  public filter: string;
 
   public loading: Boolean = true;
 
   public showFilter: Boolean = false;
 
-  public form: FormGroup = this._formBuilder.group({});
-
   constructor(
-    private _formBuilder: FormBuilder,
     private _indicatorsService: IndicatorsService
   ) { }
 
   ngOnInit(): void {
-    this.initForm();
     this.getIndicators()
-  }
-
-  initForm() {
-    this.form = this._formBuilder.group({
-      name: [null]
-    });
   }
 
   getIndicators() {
@@ -52,7 +42,7 @@ export class IndicatorsComponent implements OnInit {
           return 0;
         })
         .map((item: any) => new Indicator(item)) // Modifica el item con la clase Indicator
-      this.indicatorsSaved = this.indicators;
+      this.indicatorsFiltered = this.indicators;
       this.loading = false;
     }, error => {
       this.loading = false;
@@ -64,23 +54,18 @@ export class IndicatorsComponent implements OnInit {
     });
   }
 
-  onChange(name: any) {
-    this.indicators = this.indicatorsSaved;
-    this.loading = true;
-    setTimeout(() => {
-      this.indicators = this.indicators.filter(indicator => indicator.nombre == name)
-      this.loading = false;
-    }, 500);
-    console.log(name)
+  searchIndicator() {
+    this.indicatorsFiltered = this.indicators;
+    console.log(this.filter)
+    this.indicatorsFiltered = this.indicatorsFiltered.filter(item => this.stringToSearch(item.nombre).includes(this.filter.toLowerCase())
+      || this.stringToSearch(item.unidad_medida).includes(this.filter.toLowerCase()))
   }
 
-  clear() {
-    this.loading = true;
-    setTimeout(() => {
-      this.loading = false;
-      this.form.reset();
-      this.indicators = this.indicatorsSaved;
-    }, 500);
+  stringToSearch(value: string) {
+    return value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLocaleLowerCase()
   }
 
 }

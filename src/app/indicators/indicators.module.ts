@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { IndicatorsComponent } from './indicators.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IndicatorsService } from '../services/indicators.service';
@@ -9,7 +9,7 @@ import { IndicatorSerieComponent } from './components/item-indicator/indicator-s
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { IndicatorDetailComponent } from './components/item-indicator/indicator-detail/indicator-detail.component';
-
+import {NgApexchartsModule} from 'ng-apexcharts'
 
 @NgModule({
   declarations: [
@@ -24,13 +24,15 @@ import { IndicatorDetailComponent } from './components/item-indicator/indicator-
     SharedModule,
     NgSelectModule, 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgApexchartsModule,
   ],
   exports: [
     IndicatorsComponent
   ],
   providers: [
-    IndicatorsService
+    IndicatorsService,
+    DecimalPipe
   ]
 })
 export class IndicatorsModule { }
