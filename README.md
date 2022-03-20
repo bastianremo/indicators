@@ -1,6 +1,6 @@
 # Indicators
 
-Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 12.2.16.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 12.2.16 y [Node.js](https://nodejs.org/es/) versión 12.20.
 
 ## Descripción
 
@@ -12,7 +12,9 @@ Para ver una demo del sitio puedes entrar a la siguiente url https://indicators3
 
 ## Ambiente Local
 
-Primero debes descargar los paquetes con el comando `npm i` y descargar el proyecto desde el repositorio https://github.com/bastianremo/indicators.
+Puedes descargar el proyecto desde el repositorio https://github.com/bastianremo/indicators. 
+
+Primero debes descargar los paquetes con el comando `npm i`.
 
 Para ejecutar la aplicación debes ingresar el comando `ng serve` en la consola. Abrir el navegador y escribir la siguiente url `http://localhost:4200/`. La aplicación automáticamente se actualiza si se modifica algún archivo.
 
