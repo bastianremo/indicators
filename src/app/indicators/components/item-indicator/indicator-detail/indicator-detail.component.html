@@ -31,9 +31,7 @@
                 Fecha
             </div>
             <div class="col-md-6 font-weight-bold">
-                {{indicator.fecha | date:'dd'}} de
-                {{indicator.fecha | date:'MMMM'}} del
-                {{indicator.fecha | date:'yyyy'}}
+                {{ indicator.fecha | date: 'dd \'de\' MMMM \'del\' yyyy' }}
             </div>
         </div>
         <div class="row text-left ml-5">
