@@ -9,7 +9,7 @@
     "start": "node server.js",
     "heroku-postbuild": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod",
     "preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript",
-    "postinstall": "ng build --prod",
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
