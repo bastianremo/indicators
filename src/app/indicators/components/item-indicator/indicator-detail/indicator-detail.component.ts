@@ -92,12 +92,12 @@ export class IndicatorDetailComponent implements OnInit {
       };
       this.loading = false;
     }, error => {
-      this.loading = false;
       Swal.fire({
         icon: 'error',
         title: 'Ups...',
-        text: `Ha ocurrido un error al obtener el detalle del indicador ${this.indicator.codigo}`
+        text: `Ha ocurrido un error al obtener el detalle del indicador ${this.indicator.nombre}`
       })
+      this.loading = false;
     })
   }
 

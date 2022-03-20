@@ -1,7 +1,7 @@
 <div class="modal-header d-flex justify-content-between align-items-center">
     <div>
         <i class="fa fa-chevron-left pr-0 pointer" (click)="activeModal.dismiss('Cross click')" container="body"
-            ngbTooltip="Indicadores"></i>
+            ngbTooltip="Indicadores" placement="right"></i>
     </div>
     <h4 class="font-weight-bold">
         {{indicator.nombre}}
@@ -44,10 +44,20 @@
         </div>
     </div>
     <shared-loading *ngIf="loading"></shared-loading>
-    <div id="chart" *ngIf="!loading">
-        <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
-            [yaxis]="chartOptions.yaxis" [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid"
-            [stroke]="chartOptions.stroke">
-        </apx-chart>
-    </div>
+    <ng-container *ngIf="!loading">
+        <div id="chart" *ngIf="serie && serie.length">
+            <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+                [yaxis]="chartOptions.yaxis" [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid"
+                [stroke]="chartOptions.stroke">
+            </apx-chart>
+        </div>
+        <div class="d-flex align-items-center justify-content-center" *ngIf="!serie || !serie.length">
+            <div class="alert alert-warning border border-warning m-3 text-center w-100">
+                <div>
+                    <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i>
+                </div>
+                No se han encontrado datos para graficar
+            </div>
+        </div>
+    </ng-container>
 </div>

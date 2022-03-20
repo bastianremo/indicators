@@ -1,6 +1,6 @@
 <ul class="list-group">
     <li class="list-group-item bg-light d-flex justify-content-between align-items-center">
-        <div ngbTooltip="Filtrar" container="body">
+        <div ngbTooltip="Filtrar" placement="right" container="body">
             <i class="fa fa-bars text-primary fa-2x pointer" (click)="showFilter = !showFilter"></i>
         </div>
         <h3>
@@ -12,7 +12,8 @@
     <ng-container *ngIf="!loading">
         <div class="d-flex m-3" *ngIf="showFilter">
             <div class="col-md-12">
-                <input type="text" class="form-control" [(ngModel)]="filter" (keyup)="searchIndicator()" placeholder="Buscar">
+                <input type="text" class="form-control" [(ngModel)]="filter" (keyup)="searchIndicator()"
+                    placeholder="Buscar">
             </div>
         </div>
         <ng-container *ngIf="indicatorsFiltered && indicatorsFiltered.length > 0">
@@ -20,7 +21,8 @@
                 <app-item-indicator [indicator]="indicator"></app-item-indicator>
             </li>
         </ng-container>
-        <div class="d-flex align-items-center justify-content-center" *ngIf="!indicatorsFiltered || !indicatorsFiltered.length">
+        <div class="d-flex align-items-center justify-content-center"
+            *ngIf="!indicatorsFiltered || !indicatorsFiltered.length">
             <div class="alert alert-warning border border-warning m-3 text-center w-100">
                 <div>
                     <i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>

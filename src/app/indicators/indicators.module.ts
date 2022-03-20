@@ -9,7 +9,8 @@ import { IndicatorSerieComponent } from './components/item-indicator/indicator-s
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { IndicatorDetailComponent } from './components/item-indicator/indicator-detail/indicator-detail.component';
-import {NgApexchartsModule} from 'ng-apexcharts'
+import { NgApexchartsModule } from 'ng-apexcharts'
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,11 @@ import {NgApexchartsModule} from 'ng-apexcharts'
     CommonModule,
     HttpClientModule,
     SharedModule,
-    NgSelectModule, 
+    NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
     NgApexchartsModule,
+    NgbTooltipModule
   ],
   exports: [
     IndicatorsComponent

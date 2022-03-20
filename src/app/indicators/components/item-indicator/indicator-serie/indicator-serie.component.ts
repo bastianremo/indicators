@@ -16,7 +16,7 @@ export class IndicatorSerieComponent implements OnInit {
 
   public serie: Indicator[] = []
 
-  public loading:Boolean = true;
+  public loading: Boolean = true;
 
   constructor(
     private _indicatorsService: IndicatorsService,
@@ -27,19 +27,19 @@ export class IndicatorSerieComponent implements OnInit {
     this.getIndicatorSerie();
   }
 
-  getIndicatorSerie(){
+  getIndicatorSerie() {
     this.loading = true;
     this._indicatorsService.getIndicatorType(this.indicator.codigo).subscribe(res => {
       this.serie = res.serie;
       // this.serie = []
       this.loading = false;
     }, error => {
-      this.loading = false;
       Swal.fire({
         icon: 'error',
         title: 'Ups...',
-        text: `Ha ocurrido un error al obtener el detalle del indicador ${this.indicator.codigo}`
+        text: `Ha ocurrido un error al obtener el detalle del indicador ${this.indicator.nombre}`
       })
+      this.loading = false;
     })
   }
 

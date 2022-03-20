@@ -5,11 +5,12 @@
                 {{indicator.nombre}}
             </h5>
         </div>
-        <a href="#" (click)="showIndicatorType(indicator)">
+        <a href="#" (click)="showIndicatorType(indicator)" ngbTooltip="Ver listado histórico" container="body">
             {{indicator.unidad_medida}}
         </a>
     </div>
     <div>
-        <i class="fa fa-info-circle pointer text-primary" (click)="openIndicatorDetail(indicator)"></i>
+        <i class="fa fa-info-circle pointer text-primary" ngbTooltip="Ver detalle del indicador" container="body"
+            (click)="openIndicatorDetail(indicator)"></i>
     </div>
 </div>

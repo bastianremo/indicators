@@ -45,23 +45,23 @@ export class IndicatorsComponent implements OnInit {
       this.indicatorsFiltered = this.indicators;
       this.loading = false;
     }, error => {
-      this.loading = false;
       Swal.fire({
         icon: 'error',
         title: 'Ups...',
-        text: 'Ha ocurrido un error al obtener la información',
+        text: 'Ha ocurrido un error al obtener la información de los indicadores',
       })
+      this.loading = false;
     });
   }
 
   searchIndicator() {
     this.indicatorsFiltered = this.indicators;
     console.log(this.filter)
-    this.indicatorsFiltered = this.indicatorsFiltered.filter(item => this.stringToSearch(item.nombre).includes(this.filter.toLowerCase())
-      || this.stringToSearch(item.unidad_medida).includes(this.filter.toLowerCase()))
+    this.indicatorsFiltered = this.indicatorsFiltered.filter(item => this.removeAccentMark(item.nombre).includes(this.filter.toLowerCase())
+      || this.removeAccentMark(item.unidad_medida).includes(this.filter.toLowerCase()))
   }
 
-  stringToSearch(value: string) {
+  removeAccentMark(value: string) {
     return value
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
