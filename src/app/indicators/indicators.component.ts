@@ -56,7 +56,6 @@ export class IndicatorsComponent implements OnInit {
 
   searchIndicator() {
     this.indicatorsFiltered = this.indicators;
-    console.log(this.filter)
     this.indicatorsFiltered = this.indicatorsFiltered.filter(item => this.removeAccentMark(item.nombre).includes(this.filter.toLowerCase())
       || this.removeAccentMark(item.unidad_medida).includes(this.filter.toLowerCase()))
   }
